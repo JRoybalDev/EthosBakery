@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream: oklch(0.972 0.008 85);
+  --card: oklch(0.992 0.005 85);
+  --line: oklch(0.9 0.012 80);
+  --line2: oklch(0.85 0.014 80);
+  --ink: oklch(0.255 0.018 300);
+  --ink2: oklch(0.46 0.02 300);
+  --ink3: oklch(0.62 0.018 300);
+  --purple: oklch(0.43 0.115 298);
+  --purple-d: oklch(0.34 0.1 298);
+  --blue: oklch(0.43 0.115 264);
+  --purple-soft: oklch(0.94 0.022 298);
+  --ph: repeating-linear-gradient(45deg, oklch(0.91 0.018 300), oklch(0.91 0.018 300) 11px, oklch(0.95 0.012 300) 11px, oklch(0.95 0.012 300) 22px);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:'Hanken Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+::selection{background:var(--purple);color:#fff}
+input{font-family:inherit}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes pop{0%{transform:scale(.8)}60%{transform:scale(1.12)}100%{transform:scale(1)}}
+input:focus{outline:none}
+a{color:inherit}
+</style>
+</helmet>
+
+<div style="min-height:100vh;background:var(--cream)">
+
+<!-- ============================== HOME ============================== -->
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<div>
+  <!-- NAV -->
+  <nav style="position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:16px 44px;background:color-mix(in oklab, var(--cream) 82%, transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)">
+    <div style="display:flex;align-items:center;gap:11px">
+      <div style="width:18px;height:18px;border:1.6px solid var(--purple);transform:rotate(45deg)"></div>
+      <span style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:25px;letter-spacing:.5px;line-height:1">Ethos</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:34px">
+      <a href="#home" style="font-size:13.5px;font-weight:500;letter-spacing:.04em;color:var(--ink2);text-decoration:none">Home</a>
+      <a href="#about" style="font-size:13.5px;font-weight:500;letter-spacing:.04em;color:var(--ink2);text-decoration:none">About</a>
+      <a href="#locations" style="font-size:13.5px;font-weight:500;letter-spacing:.04em;color:var(--ink2);text-decoration:none">Locations</a>
+      <a href="#menu" style="font-size:13.5px;font-weight:500;letter-spacing:.04em;color:var(--ink2);text-decoration:none">Menu</a>
+      <button onClick="{{ goOrder }}" style="border:none;background:var(--purple);color:#fff;font-family:inherit;font-size:13.5px;font-weight:600;letter-spacing:.04em;padding:10px 22px;border-radius:999px;cursor:pointer">Order</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="home" style="scroll-margin-top:68px;position:relative;min-height:84vh;display:flex;align-items:center;justify-content:center;overflow:hidden">
+    <sc-if value="{{ heroImage }}" hint-placeholder-val="{{ true }}">
+      <img src="images/hero.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />
+    </sc-if>
+    <sc-if value="{{ heroSolidOn }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute;inset:0;background:linear-gradient(160deg, var(--purple-d), var(--purple) 60%, var(--blue))"></div>
+    </sc-if>
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg, color-mix(in oklab, var(--ink) 22%, transparent), color-mix(in oklab, var(--ink) 52%, transparent))"></div>
+    <div style="position:relative;text-align:center;color:#fff;padding:40px;animation:fadeUp .9s ease both">
+      <sc-if value="{{ showCrest }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;justify-content:center;margin-bottom:22px"><div style="width:30px;height:30px;border:1.6px solid rgba(255,255,255,.85);transform:rotate(45deg);display:flex;align-items:center;justify-content:center"><div style="width:8px;height:8px;background:rgba(255,255,255,.85);transform:rotate(45deg)"></div></div></div>
+      </sc-if>
+      <p style="font-size:12.5px;letter-spacing:.42em;text-transform:uppercase;margin:0 0 18px;color:rgba(255,255,255,.82);font-weight:600">Los Angeles · Est. 2019</p>
+      <h1 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(52px,8vw,104px);line-height:.96;margin:0;letter-spacing:.5px">Ethos Bakery</h1>
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(20px,2.6vw,30px);margin:18px 0 0;color:rgba(255,255,255,.9)">Bread, pastry &amp; coffee, made with intention.</p>
+      <div style="display:flex;gap:14px;justify-content:center;margin-top:34px">
+        <button onClick="{{ goOrder }}" style="border:none;background:#fff;color:var(--purple-d);font-family:inherit;font-size:14px;font-weight:600;padding:14px 30px;border-radius:999px;cursor:pointer;letter-spacing:.03em">Order Now</button>
+        <a href="#menu" style="border:1.5px solid rgba(255,255,255,.7);color:#fff;font-size:14px;font-weight:600;padding:13px 28px;border-radius:999px;text-decoration:none;letter-spacing:.03em">Explore Menu</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" style="scroll-margin-top:68px;padding:108px 44px;text-align:center;background:var(--cream)">
+    <div style="max-width:760px;margin:0 auto">
+      <sc-if value="{{ showCrest }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;justify-content:center;margin-bottom:26px"><div style="width:22px;height:22px;border:1.4px solid var(--purple);transform:rotate(45deg)"></div></div>
+      </sc-if>
+      <p style="font-size:12px;letter-spacing:.4em;text-transform:uppercase;color:var(--purple);font-weight:600;margin:0 0 20px">Our Ethos</p>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(32px,4.5vw,52px);line-height:1.1;margin:0 0 26px;letter-spacing:.3px">A small bakery with a long-standing devotion to craft.</h2>
+      <p style="font-size:17px;line-height:1.75;color:var(--ink2);margin:0 auto;max-width:600px">Every morning before the city wakes, we shape by hand and bake in stone. Our loaves are slow-fermented over three days; our pastries laminated with cultured butter; our coffee sourced from growers we know by name. No shortcuts — just the patient pursuit of something worth waking up for.</p>
+      <div style="display:flex;justify-content:center;gap:56px;margin-top:48px;flex-wrap:wrap">
+        <div><div style="font-family:'Cormorant Garamond',serif;font-size:42px;color:var(--purple);line-height:1">3</div><div style="font-size:12.5px;letter-spacing:.06em;color:var(--ink3);margin-top:6px">Day ferment</div></div>
+        <div><div style="font-family:'Cormorant Garamond',serif;font-size:42px;color:var(--purple);line-height:1">4am</div><div style="font-size:12.5px;letter-spacing:.06em;color:var(--ink3);margin-top:6px">First bake</div></div>
+        <div><div style="font-family:'Cormorant Garamond',serif;font-size:42px;color:var(--purple);line-height:1">2</div><div style="font-size:12.5px;letter-spacing:.06em;color:var(--ink3);margin-top:6px">LA locations</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATIONS -->
+  <section id="locations" style="scroll-margin-top:68px;padding:96px 44px;background:var(--purple-soft)">
+    <div style="max-width:1120px;margin:0 auto">
+      <div style="text-align:center;margin-bottom:50px">
+        <p style="font-size:12px;letter-spacing:.4em;text-transform:uppercase;color:var(--purple);font-weight:600;margin:0 0 16px">Find Us</p>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(30px,4vw,46px);margin:0;letter-spacing:.3px">Two doors across Los Angeles</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:28px">
+        <div style="background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden">
+          <div style="height:200px;border-bottom:1px solid var(--line)"><img src="images/map-silverlake.png" alt="" style="width:100%;height:100%;object-fit:cover;display:block" /></div>
+          <div style="padding:26px 28px">
+            <div style="display:flex;align-items:center;gap:9px;margin-bottom:6px"><div style="width:9px;height:9px;background:var(--purple);transform:rotate(45deg)"></div><span style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--purple);font-weight:600">Silver Lake</span></div>
+            <h3 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:27px;margin:0 0 12px">Ethos Sunset</h3>
+            <p style="font-size:14.5px;line-height:1.6;color:var(--ink2);margin:0">2814 Sunset Blvd, Los Angeles, CA 90026</p>
+            <p style="font-size:13.5px;line-height:1.6;color:var(--ink3);margin:10px 0 0">Mon–Sun · 7am–6pm</p>
+          </div>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden">
+          <div style="height:200px;border-bottom:1px solid var(--line)"><img src="images/map-venice.png" alt="" style="width:100%;height:100%;object-fit:cover;display:block" /></div>
+          <div style="padding:26px 28px">
+            <div style="display:flex;align-items:center;gap:9px;margin-bottom:6px"><div style="width:9px;height:9px;background:var(--purple);transform:rotate(45deg)"></div><span style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--purple);font-weight:600">Venice</span></div>
+            <h3 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:27px;margin:0 0 12px">Ethos Abbot</h3>
+            <p style="font-size:14.5px;line-height:1.6;color:var(--ink2);margin:0">1331 Abbot Kinney Blvd, Venice, CA 90291</p>
+            <p style="font-size:13.5px;line-height:1.6;color:var(--ink3);margin:10px 0 0">Mon–Sun · 7am–6pm</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section id="menu" style="scroll-margin-top:68px;padding:104px 44px;background:var(--cream)">
+    <div style="max-width:1120px;margin:0 auto">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:20px;margin-bottom:54px">
+        <div>
+          <p style="font-size:12px;letter-spacing:.4em;text-transform:uppercase;color:var(--purple);font-weight:600;margin:0 0 16px">The Counter</p>
+          <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(32px,4.5vw,52px);margin:0;letter-spacing:.3px">Today's selection</h2>
+        </div>
+        <button onClick="{{ goOrder }}" style="border:1.5px solid var(--purple);background:transparent;color:var(--purple);font-family:inherit;font-size:13.5px;font-weight:600;padding:12px 26px;border-radius:999px;cursor:pointer;letter-spacing:.03em">Order for pickup &amp; delivery →</button>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:40px">
+        <sc-for list="{{ menuGroups }}" as="group" hint-placeholder-count="3">
+          <div>
+            <div style="height:150px;border:1px solid var(--line);border-radius:14px;position:relative;margin-bottom:22px;overflow:hidden;background:var(--ph)"><sc-if value="{{ group.img }}" hint-placeholder-val="{{ false }}"><img src="{{ group.img }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block" /></sc-if></div>
+            <h3 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:25px;margin:0 0 18px;padding-bottom:14px;border-bottom:1px solid var(--line2)">{{ group.cat }}</h3>
+            <sc-for list="{{ group.items }}" as="it" hint-placeholder-count="4">
+              <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:16px">
+                <div style="min-width:0"><div style="font-size:15px;font-weight:600;color:var(--ink)">{{ it.name }}</div><div style="font-size:13px;color:var(--ink3);margin-top:3px;line-height:1.4">{{ it.blurb }}</div></div>
+                <div style="font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--purple);font-weight:600;white-space:nowrap">{{ it.priceLabel }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background:var(--ink);color:oklch(0.86 0.01 300);padding:72px 44px 36px">
+    <div style="max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:40px">
+      <div>
+        <div style="display:flex;align-items:center;gap:11px;margin-bottom:16px"><div style="width:18px;height:18px;border:1.6px solid #fff;transform:rotate(45deg)"></div><span style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:26px;color:#fff">Ethos</span></div>
+        <p style="font-size:14px;line-height:1.7;color:oklch(0.72 0.012 300);max-width:300px;margin:0">Bread, pastry & coffee, made with intention. Baked fresh daily across Los Angeles.</p>
+      </div>
+      <div>
+        <p style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:oklch(0.66 0.04 298);margin:0 0 16px;font-weight:600">Visit</p>
+        <p style="font-size:14px;line-height:1.9;color:oklch(0.78 0.012 300);margin:0">Silver Lake<br>Venice<br>Mon–Sun · 7am–6pm</p>
+      </div>
+      <div>
+        <p style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:oklch(0.66 0.04 298);margin:0 0 16px;font-weight:600">Connect</p>
+        <p style="font-size:14px;line-height:1.9;color:oklch(0.78 0.012 300);margin:0">Instagram<br><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="523a373e3e3d1237263a3d2130333937202b7c3e33">[email&#160;protected]</a><br>(323) 555–0119</p>
+      </div>
+    </div>
+    <div style="max-width:1120px;margin:48px auto 0;padding-top:24px;border-top:1px solid oklch(0.36 0.02 300);font-size:12.5px;color:oklch(0.62 0.012 300)">© 2026 Ethos Bakery · Los Angeles, CA</div>
+  </footer>
+</div>
+</sc-if>
+
+<!-- ============================== ORDER ============================== -->
+<sc-if value="{{ isOrder }}" hint-placeholder-val="{{ false }}">
+<div style="min-height:100vh;background:var(--cream)">
+  <!-- ORDER HEADER -->
+  <header style="position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:15px 36px;background:color-mix(in oklab, var(--cream) 86%, transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)">
+    <button onClick="{{ goHome }}" style="display:flex;align-items:center;gap:9px;border:none;background:transparent;cursor:pointer;font-family:inherit;color:var(--ink2);font-size:13.5px;font-weight:500">← Back to site</button>
+    <div style="display:flex;align-items:center;gap:10px"><div style="width:15px;height:15px;border:1.5px solid var(--purple);transform:rotate(45deg)"></div><span style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:22px">Ethos · Order</span></div>
+    <button onClick="{{ goCart }}" style="position:relative;display:flex;align-items:center;gap:8px;border:1.5px solid var(--line2);background:var(--card);cursor:pointer;font-family:inherit;color:var(--ink);font-size:13px;font-weight:600;padding:9px 16px;border-radius:999px">
+      Cart
+      <sc-if value="{{ hasItems }}" hint-placeholder-val="{{ false }}">
+        <span style="min-width:20px;height:20px;padding:0 5px;background:var(--purple);color:#fff;border-radius:999px;font-size:11.5px;display:inline-flex;align-items:center;justify-content:center;animation:pop .3s ease">{{ count }}</span>
+      </sc-if>
+    </button>
+  </header>
+
+  <!-- STEP: MENU -->
+  <sc-if value="{{ stepMenu }}" hint-placeholder-val="{{ true }}">
+  <div style="max-width:1120px;margin:0 auto;padding:44px 36px 90px">
+    <h1 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:46px;margin:0 0 6px;letter-spacing:.3px">Build your order</h1>
+    <p style="font-size:15px;color:var(--ink2);margin:0 0 30px">Pickup or delivery across Los Angeles · ready in ~20 min</p>
+    <!-- search + filters -->
+    <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:30px">
+      <div style="position:relative;flex:1;min-width:240px">
+        <span style="position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--ink3);font-size:14px">⌕</span>
+        <input value="{{ query }}" onInput="{{ onQuery }}" placeholder="Search pastries, breads, coffee…" style="width:100%;border:1px solid var(--line2);background:var(--card);border-radius:999px;padding:13px 18px 13px 38px;font-size:14px;color:var(--ink)" />
+      </div>
+      <div style="display:flex;gap:9px;flex-wrap:wrap">
+        <sc-for list="{{ catPills }}" as="pill" hint-placeholder-count="4">
+          <button onClick="{{ pill.onClick }}" style="border:1.5px solid;border-radius:999px;padding:11px 20px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;{{ pill.style }}">{{ pill.name }}</button>
+        </sc-for>
+      </div>
+    </div>
+    <!-- grid -->
+    <sc-if value="{{ gridEmpty }}" hint-placeholder-val="{{ false }}">
+      <div style="text-align:center;padding:80px 20px;color:var(--ink3)"><p style="font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--ink2);margin:0 0 8px">Nothing matches that.</p><p style="font-size:14px;margin:0">Try another search or category.</p></div>
+    </sc-if>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+      <sc-for list="{{ grid }}" as="item" hint-placeholder-count="6">
+        <div style="background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column">
+          <div style="height:148px;position:relative;overflow:hidden;background:var(--ph)"><sc-if value="{{ item.img }}" hint-placeholder-val="{{ false }}"><img src="{{ item.img }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block" /></sc-if></div>
+          <div style="padding:18px 18px 20px;display:flex;flex-direction:column;flex:1">
+            <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:21px;line-height:1.15;margin-bottom:5px">{{ item.name }}</div>
+            <div style="font-size:13px;color:var(--ink3);line-height:1.5;margin-bottom:16px;flex:1">{{ item.blurb }}</div>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+              <span style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--purple)">{{ item.priceLabel }}</span>
+              <sc-if value="{{ item.addMode }}" hint-placeholder-val="{{ true }}">
+                <button onClick="{{ item.add }}" style="border:none;background:var(--purple);color:#fff;font-family:inherit;font-size:13px;font-weight:600;padding:9px 18px;border-radius:999px;cursor:pointer">Add</button>
+              </sc-if>
+              <sc-if value="{{ item.hasQty }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;align-items:center;gap:0;border:1.5px solid var(--purple);border-radius:999px;overflow:hidden">
+                  <button onClick="{{ item.dec }}" style="border:none;background:transparent;color:var(--purple);font-family:inherit;font-size:17px;width:32px;height:34px;cursor:pointer;line-height:1">−</button>
+                  <span style="min-width:22px;text-align:center;font-size:14px;font-weight:600;color:var(--purple)">{{ item.qty }}</span>
+                  <button onClick="{{ item.inc }}" style="border:none;background:var(--purple);color:#fff;font-family:inherit;font-size:17px;width:34px;height:34px;cursor:pointer;line-height:1">+</button>
+                </div>
+              </sc-if>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <sc-if value="{{ hasItems }}" hint-placeholder-val="{{ false }}">
+      <div style="position:sticky;bottom:22px;display:flex;justify-content:center;margin-top:40px">
+        <button onClick="{{ goCart }}" style="display:flex;align-items:center;gap:14px;border:none;background:var(--ink);color:#fff;font-family:inherit;font-size:14px;font-weight:600;padding:15px 26px;border-radius:999px;cursor:pointer;box-shadow:0 8px 28px rgba(0,0,0,.18)"><span>View cart · {{ count }} item(s)</span><span style="font-family:'Cormorant Garamond',serif;font-size:17px">{{ subtotalLabel }}</span><span style="opacity:.7">→</span></button>
+      </div>
+    </sc-if>
+  </div>
+  </sc-if>
+
+  <!-- STEP: CART -->
+  <sc-if value="{{ stepCart }}" hint-placeholder-val="{{ false }}">
+  <div style="max-width:720px;margin:0 auto;padding:44px 36px 90px">
+    <button onClick="{{ goMenu }}" style="border:none;background:transparent;cursor:pointer;font-family:inherit;color:var(--purple);font-size:13.5px;font-weight:600;margin-bottom:18px;padding:0">← Add more items</button>
+    <h1 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:42px;margin:0 0 28px;letter-spacing:.3px">Your cart</h1>
+    <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ false }}">
+      <div style="text-align:center;padding:70px 20px;background:var(--card);border:1px solid var(--line);border-radius:16px"><p style="font-family:'Cormorant Garamond',serif;font-size:26px;margin:0 0 16px;color:var(--ink2)">Your cart is empty.</p><button onClick="{{ goMenu }}" style="border:none;background:var(--purple);color:#fff;font-family:inherit;font-size:14px;font-weight:600;padding:13px 28px;border-radius:999px;cursor:pointer">Browse the menu</button></div>
+    </sc-if>
+    <sc-if value="{{ hasItems }}" hint-placeholder-val="{{ true }}">
+    <div>
+      <div style="background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden">
+        <sc-for list="{{ cartLines }}" as="line" hint-placeholder-count="3">
+          <div style="display:flex;align-items:center;gap:16px;padding:18px 20px;border-bottom:1px solid var(--line)">
+            <div style="width:60px;height:56px;border-radius:10px;flex:none;overflow:hidden;background:var(--ph)"><sc-if value="{{ line.img }}" hint-placeholder-val="{{ false }}"><img src="{{ line.img }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block" /></sc-if></div>
+            <div style="flex:1;min-width:0"><div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:19px">{{ line.name }}</div><div style="font-size:13px;color:var(--ink3);margin-top:2px">{{ line.priceLabel }} each</div></div>
+            <div style="display:flex;align-items:center;border:1.5px solid var(--line2);border-radius:999px;overflow:hidden"><button onClick="{{ line.dec }}" style="border:none;background:transparent;color:var(--ink);font-family:inherit;font-size:16px;width:30px;height:32px;cursor:pointer">−</button><span style="min-width:22px;text-align:center;font-size:14px;font-weight:600">{{ line.qty }}</span><button onClick="{{ line.inc }}" style="border:none;background:transparent;color:var(--ink);font-family:inherit;font-size:16px;width:30px;height:32px;cursor:pointer">+</button></div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:600;width:64px;text-align:right">{{ line.lineLabel }}</div>
+            <button onClick="{{ line.remove }}" style="border:none;background:transparent;cursor:pointer;color:var(--ink3);font-size:15px;padding:4px">✕</button>
+          </div>
+        </sc-for>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin-top:18px">
+        <div style="display:flex;justify-content:space-between;font-size:14.5px;color:var(--ink2);margin-bottom:11px"><span>Subtotal</span><span>{{ subtotalLabel }}</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:14.5px;color:var(--ink2);margin-bottom:11px"><span>Estimated tax</span><span>{{ taxLabel }}</span></div>
+        <sc-if value="{{ showDelivery }}" hint-placeholder-val="{{ false }}"><div style="display:flex;justify-content:space-between;font-size:14.5px;color:var(--ink2);margin-bottom:11px"><span>Delivery</span><span>{{ deliveryLabel }}</span></div></sc-if>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;padding-top:13px;border-top:1px solid var(--line);margin-top:4px"><span style="font-weight:600;font-size:15px">Total</span><span style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:var(--purple)">{{ totalLabel }}</span></div>
+      </div>
+      <button onClick="{{ goCheckout }}" style="width:100%;border:none;background:var(--ink);color:#fff;font-family:inherit;font-size:15px;font-weight:600;padding:17px;border-radius:14px;cursor:pointer;margin-top:18px">Continue to checkout →</button>
+    </div>
+    </sc-if>
+  </div>
+  </sc-if>
+
+  <!-- STEP: CHECKOUT -->
+  <sc-if value="{{ stepCheckout }}" hint-placeholder-val="{{ false }}">
+  <div style="max-width:600px;margin:0 auto;padding:44px 36px 90px">
+    <button onClick="{{ goCart }}" style="border:none;background:transparent;cursor:pointer;font-family:inherit;color:var(--purple);font-size:13.5px;font-weight:600;margin-bottom:18px;padding:0">← Back to cart</button>
+    <h1 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:42px;margin:0 0 26px;letter-spacing:.3px">Checkout</h1>
+    <p style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink3);font-weight:600;margin:0 0 12px">How would you like it?</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:30px">
+      <button onClick="{{ setPickup }}" style="text-align:left;border:1.5px solid;border-radius:14px;padding:18px;cursor:pointer;font-family:inherit;{{ pickupStyle }}"><div style="font-weight:600;font-size:15px;margin-bottom:4px">Pickup</div><div style="font-size:13px;opacity:.8">Ready in ~20 min · free</div></button>
+      <button onClick="{{ setDelivery }}" style="text-align:left;border:1.5px solid;border-radius:14px;padding:18px;cursor:pointer;font-family:inherit;{{ deliveryStyle }}"><div style="font-weight:600;font-size:15px;margin-bottom:4px">Delivery</div><div style="font-size:13px;opacity:.8">35–50 min · $4.99</div></button>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div><label style="display:block;font-size:13px;font-weight:600;color:var(--ink2);margin-bottom:7px">Full name</label><input placeholder="Your name" style="width:100%;border:1px solid var(--line2);background:var(--card);border-radius:11px;padding:13px 15px;font-size:14px;color:var(--ink)" /></div>
+      <div style="display:flex;gap:14px"><div style="flex:1"><label style="display:block;font-size:13px;font-weight:600;color:var(--ink2);margin-bottom:7px">Phone</label><input placeholder="(323) 555–0000" style="width:100%;border:1px solid var(--line2);background:var(--card);border-radius:11px;padding:13px 15px;font-size:14px;color:var(--ink)" /></div><div style="flex:1"><label style="display:block;font-size:13px;font-weight:600;color:var(--ink2);margin-bottom:7px">Email</label><input placeholder="you@email.com" style="width:100%;border:1px solid var(--line2);background:var(--card);border-radius:11px;padding:13px 15px;font-size:14px;color:var(--ink)" /></div></div>
+      <sc-if value="{{ isPickup }}" hint-placeholder-val="{{ true }}">
+        <div><label style="display:block;font-size:13px;font-weight:600;color:var(--ink2);margin-bottom:7px">Pickup location</label>
+          <sc-for list="{{ locations }}" as="loc" hint-placeholder-count="2">
+            <label style="display:flex;align-items:center;gap:11px;border:1px solid var(--line2);background:var(--card);border-radius:11px;padding:14px 15px;margin-bottom:10px;cursor:pointer"><span style="width:13px;height:13px;border:1.5px solid var(--purple);border-radius:50%;flex:none"></span><span style="font-size:14px"><b style="font-weight:600">{{ loc.name }}</b> · {{ loc.address }}</span></label>
+          </sc-for>
+        </div>
+      </sc-if>
+      <sc-if value="{{ isDelivery }}" hint-placeholder-val="{{ false }}">
+        <div><label style="display:block;font-size:13px;font-weight:600;color:var(--ink2);margin-bottom:7px">Delivery address</label><input placeholder="Street address, city, ZIP" style="width:100%;border:1px solid var(--line2);background:var(--card);border-radius:11px;padding:13px 15px;font-size:14px;color:var(--ink)" /></div>
+      </sc-if>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:28px;padding-top:18px;border-top:1px solid var(--line)"><span style="font-size:14px;color:var(--ink2)">Total</span><span style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--purple)">{{ totalLabel }}</span></div>
+    <button onClick="{{ goPayment }}" style="width:100%;border:none;background:var(--ink);color:#fff;font-family:inherit;font-size:15px;font-weight:600;padding:17px;border-radius:14px;cursor:pointer;margin-top:18px">Continue to payment →</button>
+  </div>
+  </sc-if>
+
+  <!-- STEP: PAYMENT -->
+  <sc-if value="{{ stepPayment }}" hint-placeholder-val="{{ false }}">
+  <div style="max-width:560px;margin:0 auto;padding:44px 36px 90px">
+    <button onClick="{{ goCheckout }}" style="border:none;background:transparent;cursor:pointer;font-family:inherit;color:var(--purple);font-size:13.5px;font-weight:600;margin-bottom:18px;padding:0">← Back to checkout</button>
+    <h1 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:42px;margin:0 0 26px;letter-spacing:.3px">Payment</h1>
+    <div style="background:var(--purple-soft);border-radius:16px;padding:20px 22px;margin-bottom:26px">
+      <div style="display:flex;justify-content:space-between;font-size:14px;color:var(--ink2);margin-bottom:9px"><span>Subtotal</span><span>{{ subtotalLabel }}</span></div>
+      <div style="display:flex;justify-content:space-between;font-size:14px;color:var(--ink2);margin-bottom:9px"><span>Tax</span><span>{{ taxLabel }}</span></div>
+      <sc-if value="{{ showDelivery }}" hint-placeholder-val="{{ false }}"><div style="display:flex;justify-content:space-between;font-size:14px;color:var(--ink2);margin-bottom:9px"><span>Delivery</span><span>{{ deliveryLabel }}</span></div></sc-if>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;padding-top:11px;border-top:1px solid var(--line2)"><span style="font-weight:600;font-size:14px">Total due</span><span style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:600;color:var(--purple)">{{ totalLabel }}</span></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div><label style="display:block;font-size:13px;font-weight:600;color:var(--ink2);margin-bottom:7px">Card number</label><input placeholder="1234  5678  9012  3456" style="width:100%;border:1px solid var(--line2);background:var(--card);border-radius:11px;padding:13px 15px;font-size:14px;color:var(--ink)" /></div>
+      <div style="display:flex;gap:14px"><div style="flex:1"><label style="display:block;font-size:13px;font-weight:600;color:var(--ink2);margin-bottom:7px">Expiry</label><input placeholder="MM / YY" style="width:100%;border:1px solid var(--line2);background:var(--card);border-radius:11px;padding:13px 15px;font-size:14px;color:var(--ink)" /></div><div style="width:120px"><label style="display:block;font-size:13px;font-weight:600;color:var(--ink2);margin-bottom:7px">CVC</label><input placeholder="123" style="width:100%;border:1px solid var(--line2);background:var(--card);border-radius:11px;padding:13px 15px;font-size:14px;color:var(--ink)" /></div></div>
+      <div><label style="display:block;font-size:13px;font-weight:600;color:var(--ink2);margin-bottom:7px">Name on card</label><input placeholder="Full name" style="width:100%;border:1px solid var(--line2);background:var(--card);border-radius:11px;padding:13px 15px;font-size:14px;color:var(--ink)" /></div>
+    </div>
+    <button onClick="{{ placeOrder }}" style="width:100%;border:none;background:var(--purple);color:#fff;font-family:inherit;font-size:15px;font-weight:600;padding:17px;border-radius:14px;cursor:pointer;margin-top:24px">Place order · {{ totalLabel }}</button>
+    <p style="text-align:center;font-size:12.5px;color:var(--ink3);margin:14px 0 0">🔒 Prototype only — no real payment is processed.</p>
+  </div>
+  </sc-if>
+
+  <!-- STEP: DONE -->
+  <sc-if value="{{ stepDone }}" hint-placeholder-val="{{ false }}">
+  <div style="max-width:520px;margin:0 auto;padding:90px 36px;text-align:center">
+    <div style="display:flex;justify-content:center;margin-bottom:28px;animation:pop .5s ease both"><div style="width:64px;height:64px;border:2px solid var(--purple);transform:rotate(45deg);display:flex;align-items:center;justify-content:center"><span style="transform:rotate(-45deg);color:var(--purple);font-size:30px">✓</span></div></div>
+    <h1 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:44px;margin:0 0 14px;letter-spacing:.3px">Order confirmed</h1>
+    <p style="font-size:16px;color:var(--ink2);line-height:1.7;margin:0 auto 8px;max-width:380px">Thank you — we're firing up the oven. You'll get a text when your order is ready.</p>
+    <p style="font-size:13px;letter-spacing:.1em;color:var(--ink3);margin:18px 0 34px">ORDER {{ orderNo }} · {{ modeLabel }}</p>
+    <button onClick="{{ goHome }}" style="border:none;background:var(--ink);color:#fff;font-family:inherit;font-size:14px;font-weight:600;padding:14px 30px;border-radius:999px;cursor:pointer">Back to site</button>
+  </div>
+  </sc-if>
+
+</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:860},&quot;primary&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;oklch(0.4 0.1 330)&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Brand&quot;,&quot;options&quot;:[&quot;oklch(0.43 0.115 298)&quot;,&quot;oklch(0.43 0.115 264)&quot;,&quot;oklch(0.4 0.1 330)&quot;]},&quot;showCrest&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Brand&quot;},&quot;heroSolid&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Brand&quot;}}">
+class Component extends DCLogic {
+  state = { view:'home', step:'menu', query:'', cat:'All', cart:{}, mode:'pickup', orderNo:'' };
+
+  PRODUCTS = [
+    { id:'p1', cat:'Pastries', name:'Almond Croissant', price:5.5,  blurb:'Twice-baked, frangipane, dusted sugar' },
+    { id:'p2', cat:'Pastries', name:'Pain au Chocolat', price:4.75, blurb:'Two batons of dark Valrhona' },
+    { id:'p3', cat:'Pastries', name:'Morning Bun',       price:5.0,  blurb:'Orange zest, cinnamon, crackly edges' },
+    { id:'p4', cat:'Pastries', name:'Kouign-Amann',      price:5.25, blurb:'Caramelized laminated layers' },
+    { id:'b1', cat:'Breads',   name:'Country Sourdough',  price:9.0,  blurb:'3-day ferment, blistered crust' },
+    { id:'b2', cat:'Breads',   name:'Sesame Baguette',    price:4.5,  blurb:'Crisp crust, open crumb' },
+    { id:'b3', cat:'Breads',   name:'Seeded Rye',         price:8.5,  blurb:'Caraway, flax & sunflower' },
+    { id:'b4', cat:'Breads',   name:'Brioche Loaf',       price:7.0,  blurb:'Cultured butter, feather-soft' },
+    { id:'c1', cat:'Coffee',   name:'Cortado',            price:4.25, blurb:'Equal parts espresso & milk' },
+    { id:'c2', cat:'Coffee',   name:'Honey Lavender Latte',price:6.0, blurb:'House syrup, single-origin' },
+    { id:'c3', cat:'Coffee',   name:'Cold Brew',          price:5.0,  blurb:'18-hour steep, deep & smooth' },
+    { id:'c4', cat:'Coffee',   name:'Cappuccino',         price:4.5,  blurb:'Dense microfoam, dark roast' },
+  ];
+
+  LOCATIONS = [
+    { area:'Silver Lake', name:'Ethos Sunset', address:'2814 Sunset Blvd, Los Angeles, CA 90026', hours:'Mon–Sun · 7am–6pm', map:'images/map-silverlake.png' },
+    { area:'Venice',      name:'Ethos Abbot',  address:'1331 Abbot Kinney Blvd, Venice, CA 90291', hours:'Mon–Sun · 7am–6pm', map:'images/map-venice.png' },
+  ];
+
+  IMG = { p1:'croissant', p2:'painauchocolat', p3:'morningbun', p4:'kouignamann', b1:'sourdough', b2:'baguette', b3:'rye', b4:'brioche', c1:'cortado', c2:'latte', c3:'coldbrew', c4:'cappuccino' };
+  GROUP_IMG = { Pastries:'croissant', Breads:'sourdough', Coffee:'latte' };
+  imgOf(id){ return 'images/' + this.IMG[id] + '.png'; }
+
+  fmt(n){ return '$' + n.toFixed(2); }
+
+  jump(view, step){ this.setState(st => ({ view, step: step || st.step })); try { window.scrollTo(0,0); } catch(e){} }
+
+  add(id){ this.setState(s => { const c = {...s.cart}; c[id] = (c[id]||0) + 1; return { cart:c }; }); }
+  dec(id){ this.setState(s => { const c = {...s.cart}; const v = (c[id]||0) - 1; if (v <= 0) delete c[id]; else c[id] = v; return { cart:c }; }); }
+  remove(id){ this.setState(s => { const c = {...s.cart}; delete c[id]; return { cart:c }; }); }
+
+  componentDidMount(){ this.applyPrimary(); }
+  componentDidUpdate(prev){ if (prev.primary !== this.props.primary) this.applyPrimary(); }
+  applyPrimary(){
+    const p = this.props.primary;
+    if (!p) return;
+    try {
+      document.documentElement.style.setProperty('--purple', p);
+      document.documentElement.style.setProperty('--purple-d', `color-mix(in oklab, ${p} 78%, black)`);
+      document.documentElement.style.setProperty('--purple-soft', `color-mix(in oklab, ${p} 12%, white)`);
+    } catch(e){}
+  }
+
+  renderVals(){
+    const s = this.state;
+    const showCrest = this.props.showCrest ?? true;
+    const heroSolid = this.props.heroSolid ?? false;
+
+    const cats = ['All','Pastries','Breads','Coffee'];
+    const catPills = cats.map(name => ({
+      name,
+      onClick: () => this.setState({ cat:name }),
+      style: (s.cat === name)
+        ? 'background:var(--purple);color:#fff;border-color:var(--purple);'
+        : 'background:transparent;color:var(--ink2);border-color:var(--line2);'
+    }));
+
+    const q = s.query.trim().toLowerCase();
+    const grid = this.PRODUCTS
+      .filter(p => (s.cat === 'All' || p.cat === s.cat) && (!q || p.name.toLowerCase().includes(q) || p.cat.toLowerCase().includes(q)))
+      .map(p => { const qty = s.cart[p.id] || 0; return {
+        ...p, priceLabel: this.fmt(p.price), phLabel: p.cat.toUpperCase(), img: this.imgOf(p.id),
+        qty, hasQty: qty > 0, addMode: qty === 0,
+        add: () => this.add(p.id), inc: () => this.add(p.id), dec: () => this.dec(p.id)
+      }; });
+
+    const cartLines = this.PRODUCTS.filter(p => s.cart[p.id]).map(p => { const qty = s.cart[p.id]; return {
+      ...p, qty, priceLabel: this.fmt(p.price), lineLabel: this.fmt(p.price * qty), img: this.imgOf(p.id),
+      inc: () => this.add(p.id), dec: () => this.dec(p.id), remove: () => this.remove(p.id)
+    }; });
+
+    const count = Object.values(s.cart).reduce((a,b) => a+b, 0);
+    const subtotal = this.PRODUCTS.reduce((a,p) => a + (s.cart[p.id]||0) * p.price, 0);
+    const delivery = s.mode === 'delivery' ? 4.99 : 0;
+    const tax = subtotal * 0.095;
+    const total = subtotal + tax + delivery;
+
+    const menuGroups = ['Pastries','Breads','Coffee'].map(cat => ({
+      cat, phLabel: cat.toUpperCase(), img: 'images/' + this.GROUP_IMG[cat] + '.png',
+      items: this.PRODUCTS.filter(p => p.cat === cat).map(p => ({ name:p.name, priceLabel:this.fmt(p.price), blurb:p.blurb }))
+    }));
+
+    const onTog = (active) => active
+      ? 'background:var(--purple);border-color:var(--purple);color:#fff;'
+      : 'background:var(--card);border-color:var(--line2);color:var(--ink);';
+
+    return {
+      isHome: s.view === 'home', isOrder: s.view === 'order',
+      heroImage: !heroSolid, heroSolidOn: heroSolid, showCrest,
+      stepMenu: s.step === 'menu', stepCart: s.step === 'cart', stepCheckout: s.step === 'checkout',
+      stepPayment: s.step === 'payment', stepDone: s.step === 'done',
+      query: s.query, onQuery: (e) => this.setState({ query: e.target.value }),
+      catPills, grid, gridEmpty: grid.length === 0,
+      cartLines, count, hasItems: count > 0, isEmpty: count === 0,
+      subtotalLabel: this.fmt(subtotal), taxLabel: this.fmt(tax), totalLabel: this.fmt(total),
+      deliveryLabel: delivery ? this.fmt(delivery) : 'Free', showDelivery: s.mode === 'delivery',
+      menuGroups, locations: this.LOCATIONS,
+      goOrder: () => this.jump('order','menu'), goHome: () => { this.setState({ cart:{}, query:'', cat:'All' }); this.jump('home'); },
+      goMenu: () => this.jump('order','menu'), goCart: () => this.jump('order','cart'),
+      goCheckout: () => this.jump('order','checkout'), goPayment: () => this.jump('order','payment'),
+      isPickup: s.mode === 'pickup', isDelivery: s.mode === 'delivery',
+      setPickup: () => this.setState({ mode:'pickup' }), setDelivery: () => this.setState({ mode:'delivery' }),
+      pickupStyle: onTog(s.mode === 'pickup'), deliveryStyle: onTog(s.mode === 'delivery'),
+      modeLabel: s.mode === 'delivery' ? 'Delivery' : 'Pickup',
+      placeOrder: () => { const no = 'ETH-' + Math.floor(1000 + Math.random()*9000); this.setState({ orderNo: no }); this.jump('order','done'); },
+      orderNo: s.orderNo,
+    };
+  }
+}
+</script>
+</body>
+</html>
