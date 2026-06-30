@@ -8,7 +8,7 @@ import Home from "./pages/Home.tsx";
 import Order from "./pages/Order.tsx";
 
 export const navDirectory = [
-  { label: "Home", url: "/" },
+  { label: "Home", url: "#hero" },
   { label: "About", url: "#about" },
   { label: "Locations", url: "#locations" },
   { label: "Menu", url: "#menu" },
