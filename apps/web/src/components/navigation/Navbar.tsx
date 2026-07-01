@@ -24,7 +24,7 @@ function Navbar({ navDirectory }: NavbarProps) {
   return (
     <div className='sticky top-0 z-50 flex items-center px-11 justify-between [background:color-mix(in_oklab,var(--ivory)_82%,transparent)] [backdrop-filter:blur(12px)]'>
       {/* Left Nav (LOGO) */}
-      <div className='w-18 pb-2 hover:cursor-pointer'>
+      <div className='w-18 pb-2 hover:cursor-pointer hover:scale-105 duration-300'>
         <img className='object-cover' src='/logos/Ethos-PurpleDeep-512.png' onClick={() => handleRedirect('/')}/>
       </div>
 
