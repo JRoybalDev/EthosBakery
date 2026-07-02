@@ -1,8 +1,10 @@
+import { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 export default function Confirmation() {
   const navigate = useNavigate();
   const { state } = useLocation();
+  useEffect(() => { document.title = "Ethos Bakery | Order Confirmed"; }, []);
   const orderNo: string = state?.orderNo ?? "ETH-????";
   const mode: string = state?.mode === "delivery" ? "Delivery" : "Pickup";
 

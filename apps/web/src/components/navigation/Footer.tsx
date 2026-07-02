@@ -39,7 +39,7 @@ function Footer() {
         </div>
       </div>
       <div className="max-w-280 mt-12 mx-auto mb-0 pt-6 border-t border-t-[oklch(0.36_0.02_300)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-[12.5px] text-[oklch(0.62_0.012_300)]">
-        <span>© 2026 Ethos Bakery · Los Angeles, CA</span>
+        <span>© 2026 Ethos Bakery · Los Angeles, CA · Not a Real Business ·</span>
         <div className="flex items-center gap-3">
           <span>Property of JRoybalDev</span>
           <div className="flex items-center gap-2.5">

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "@/context/CartContext";
 import locations from "@/data/locations.json";
@@ -7,6 +7,7 @@ export default function Checkout() {
   const navigate = useNavigate();
   const { mode, setMode, subtotal, tax, deliveryFee, total, fmt } = useCart();
 
+  useEffect(() => { document.title = "Ethos Bakery | Checkout"; }, []);
   const [form, setForm] = useState({ name: "", phone: "", email: "", address: "", locationIdx: 0 });
 
   const set = (key: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement>) =>

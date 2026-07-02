@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "@/context/CartContext";
 
@@ -6,6 +6,7 @@ export default function Payment() {
   const navigate = useNavigate();
   const { subtotal, tax, deliveryFee, total, fmt, mode, clearCart } = useCart();
 
+  useEffect(() => { document.title = "Ethos Bakery | Payment"; }, []);
   const [form, setForm] = useState({ card: "", expiry: "", cvc: "", name: "" });
 
   const set = (key: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement>) =>

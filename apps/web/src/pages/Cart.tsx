@@ -1,8 +1,10 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "@/context/CartContext";
 
 export default function Cart() {
   const navigate = useNavigate();
+  useEffect(() => { document.title = "Ethos Bakery | Cart"; }, []);
   const { cartLines, count, subtotal, tax, deliveryFee, total, fmt, add, dec, remove, mode } = useCart();
 
   const isEmpty = count === 0;

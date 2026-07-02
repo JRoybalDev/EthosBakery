@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import OrderMenuCard from "@/components/orders/OrderMenuCard";
 import SearchFilters from "@/components/orders/SearchFilters";
@@ -6,6 +6,7 @@ import { useCart } from "@/context/CartContext";
 import allMenuItems from "@/data/menuItems.json";
 
 export default function Order() {
+  useEffect(() => { document.title = "Ethos Bakery | Order"; }, []);
   const [search, setSearch] = useState("");
   const [activeFilter, setActiveFilter] = useState("All");
   const { count, subtotal, fmt } = useCart();
