@@ -1,0 +1,7 @@
+[
+  { "label": "Home", "url": "#hero" },
+  { "label": "About", "url": "#about" },
+  { "label": "Locations", "url": "#locations" },
+  { "label": "Menu", "url": "#menu" },
+  { "label": "Order", "url": "/order" }
+]

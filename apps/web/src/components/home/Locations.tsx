@@ -1,22 +1,6 @@
 import React from "react";
 import MapCard from "../cards/MapCard";
-
-const locations = [
-  {
-    locationName: "Silver Lake",
-    businessName: "Ethos Sunset",
-    location: "2814 Sunset Blvd, Los Angeles, CA 90026",
-    daysOpen: "Mon-Sun",
-    hoursOpen: "7am-6pm"
-  },
-  {
-    locationName: "Venice",
-    businessName: "Ethos Abbot",
-    location: "1331 Abbot Kinney Blvd, Venice, CA 90291",
-    daysOpen: "Mon-Sun",
-    hoursOpen: "7am-6pm"
-  },
-]
+import locations from "@/data/locations.json";
 
 function Locations() {
   

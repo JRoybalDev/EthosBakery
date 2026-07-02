@@ -1,105 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import MenuCategory from "../cards/menuCards/MenuCategory";
-
-const menuItems = [
-  {
-    id: "p1",
-    category: "pastries",
-    itemName: "Almond Croissant",
-    itemDescription: "Twice-baked, frangipane, dusted sugar",
-    price: "$2.75",
-    image: "/images/hero.png",
-  },
-  {
-    id: "p2",
-    category: "pastries",
-    itemName: "Pain au Chocolat",
-    itemDescription: "Two batons of dark Valrhona",
-    price: "$4.75",
-    image: "/images/hero.png",
-  },
-  {
-    id: "p3",
-    category: "pastries",
-    itemName: "Morning Bun",
-    itemDescription: "Orange zest, cinnamon, crackly edges",
-    price: "$5.00",
-    image: "/images/hero.png",
-  },
-  {
-    id: "p4",
-    category: "pastries",
-    itemName: "Kouign-Amann",
-    itemDescription: "Caramelized laminated layers",
-    price: "$5.25",
-    image: "/images/hero.png",
-  },
-  {
-    id: "b1",
-    category: "breads",
-    itemName: "Country Sourdough",
-    itemDescription: "3-day ferment, blistered crust",
-    price: "$9.00",
-    image: "/images/hero.png",
-  },
-  {
-    id: "b2",
-    category: "breads",
-    itemName: "Sesame Baguette",
-    itemDescription: "Crisp crust, open crumb",
-    price: "$4.50",
-    image: "/images/hero.png",
-  },
-  {
-    id: "b3",
-    category: "breads",
-    itemName: "Seeded Rye",
-    itemDescription: "Caraway, flax & sunflower",
-    price: "$8.50",
-    image: "/images/hero.png",
-  },
-  {
-    id: "b4",
-    category: "breads",
-    itemName: "Brioche Loaf",
-    itemDescription: "Cultured butter, feather-soft",
-    price: "$7.00",
-    image: "/images/hero.png",
-  },
-  {
-    id: "c1",
-    category: "coffee",
-    itemName: "Cortado",
-    itemDescription: "Equal parts espresso & milk",
-    price: "$4.25",
-    image: "/images/hero.png",
-  },
-  {
-    id: "c2",
-    category: "coffee",
-    itemName: "Honey Lavender Latte",
-    itemDescription: "House syrup, single-origin",
-    price: "$6.00",
-    image: "/images/hero.png",
-  },
-  {
-    id: "c3",
-    category: "coffee",
-    itemName: "Cold Brew",
-    itemDescription: "18-hour steep, deep & smooth",
-    price: "$5.00",
-    image: "/images/hero.png",
-  },
-  {
-    id: "c4",
-    category: "coffee",
-    itemName: "Cappuccino",
-    itemDescription: "Dense microfoam, dark roast",
-    price: "$4.50",
-    image: "images/cappuccino.png",
-  },
-];
+import menuItems from "@/data/menuItems.json";
 
 const menuCategories = ['pastries', 'breads', 'coffee'];
 
@@ -136,7 +38,7 @@ function Menu() {
         </div>
         <div className="grid grid-cols-3 gap-10">
           {menuCategories.map((category, idx) => (
-            <MenuCategory key={idx} category={category} menuItems={menuItems}/>
+            <MenuCategory key={idx} category={category} menuItems={menuItems} />
           ))}
         </div>
       </div>
