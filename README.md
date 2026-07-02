@@ -2,8 +2,6 @@
 
 A frontend prototype for a Los Angeles artisan bakery — featuring a full home page, browsable menu, and a complete order flow from cart through confirmation.
 
-Built as a design-to-code exercise using a Claude Design mockup as the reference.
-
 ---
 
 ## Features
