@@ -23,7 +23,7 @@ export default function Order() {
   }, [search, activeFilter]);
 
   return (
-    <div className="max-w-280 my-0 mx-auto pt-11 px-9 pb-22.5">
+    <div className="max-w-280 my-0 mx-auto pt-8 px-4 md:pt-11 md:px-9 pb-22.5">
       <h1 className="font-serif font-medium text-[46px] mb-1.5 tracking-[0.3px]">
         Build your order
       </h1>
@@ -44,7 +44,7 @@ export default function Order() {
           <p className="text-sm m-0">Try another search or category.</p>
         </div>
       ) : (
-        <div className="grid grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
           {filteredItems.map((menuItem) => (
             <OrderMenuCard key={menuItem.id} menuItem={menuItem} />
           ))}

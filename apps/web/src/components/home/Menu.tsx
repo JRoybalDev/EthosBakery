@@ -22,9 +22,9 @@ function Menu() {
   };
 
   return (
-    <div id="menu" className="scroll-mt-17 px-11 py-26 bg-background">
+    <div id="menu" className="scroll-mt-17 px-5 py-14 md:px-11 md:py-26 bg-background">
       <div className="max-w-280 my-0 mx-auto">
-        <div className="flex items-end justify-between flex-wrap gap-5 mb-13.5">
+        <div className="flex items-end justify-between flex-wrap gap-5 mb-8 md:mb-13.5">
           <div>
             <p className="text-sm tracking-[0.4em] uppercase text-purple-deep font-semibold mb-4">
               The Counter
@@ -40,7 +40,7 @@ function Menu() {
             Order for pickup & delivery →
           </button>
         </div>
-        <div className="grid grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10">
           {menuCategories.map(({ category, image }, idx) => (
             <MenuCategory key={idx} category={category} image={image} menuItems={menuItems} />
           ))}

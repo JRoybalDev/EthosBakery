@@ -4,7 +4,7 @@ function About() {
   return (
     <div
       id="about"
-      className="scroll-mt-17 px-11 py-27 text-center bg-background"
+      className="scroll-mt-17 px-5 py-16 md:px-11 md:py-27 text-center bg-background"
     >
       <div className="max-w-3xl my-0 mx-auto">
         <div className="flex justify-center mb-5.5">

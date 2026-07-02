@@ -8,7 +8,7 @@ export default function Cart() {
   const isEmpty = count === 0;
 
   return (
-    <div className="max-w-180 mx-auto px-9 pt-11 pb-22.5">
+    <div className="max-w-180 mx-auto px-4 md:px-9 pt-8 md:pt-11 pb-22.5">
       <button
         onClick={() => navigate("/order")}
         className="border-none bg-transparent cursor-pointer text-royal-purple text-[13.5px] font-semibold mb-4.5 p-0 hover:scale-105 duration-300"

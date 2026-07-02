@@ -18,7 +18,7 @@ export default function Checkout() {
       : "bg-card border-hairline text-foreground";
 
   return (
-    <div className="max-w-150 mx-auto px-9 pt-11 pb-22.5">
+    <div className="max-w-150 mx-auto px-4 md:px-9 pt-8 md:pt-11 pb-22.5">
       <button
         onClick={() => navigate("/cart")}
         className="border-none bg-transparent cursor-pointer text-royal-purple text-[13.5px] font-semibold mb-4.5 p-0 hover:scale-105 duration-300"

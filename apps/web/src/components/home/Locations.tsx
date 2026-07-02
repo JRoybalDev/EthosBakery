@@ -5,9 +5,9 @@ import locations from "@/data/locations.json";
 function Locations() {
   
   return (
-    <div id="locations" className="scroll-mt-17 px-11 py-24 bg-secondary">
+    <div id="locations" className="scroll-mt-17 px-5 py-14 md:px-11 md:py-24 bg-secondary">
       <div className="max-w-280 my-0 mx-auto">
-        <div className="text-center mb-12.5">
+        <div className="text-center mb-8 md:mb-12.5">
           <p className="text-sm tracking-[0.4em] uppercase text-purple-deep font-semibold mb-4">
             Find Us
           </p>
@@ -15,7 +15,7 @@ function Locations() {
             Two doors across Los Angeles
           </h2>
         </div>
-        <div className="grid grid-cols-[repeat(2,1fr)] gap-7">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-7">
             {locations.map((location, idx) => (
               <MapCard key={idx} location={location} />
             ))}

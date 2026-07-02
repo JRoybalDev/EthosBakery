@@ -2,6 +2,16 @@
 @import "tw-animate-css";
 @import "leaflet/dist/leaflet.css";
 
+.leaflet-pane,
+.leaflet-tile-pane,
+.leaflet-overlay-pane,
+.leaflet-marker-pane,
+.leaflet-popup-pane,
+.leaflet-top,
+.leaflet-bottom {
+  z-index: 1 !important;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme {

@@ -51,7 +51,7 @@ function Hero() {
       <div className="absolute inset-0 bg-black/30" />
       <div className="absolute inset-0 [background:linear-gradient(160deg,color-mix(in_oklab,var(--purple-deep)_75%,transparent),color-mix(in_oklab,var(--royal-purple)_60%,transparent)_60%,color-mix(in_oklab,var(--royal-blue)_65%,transparent))]" />
 
-      <div className="relative text-center text-white p-10 animate-[fadeUp_.9s_ease_both]">
+      <div className="relative text-center text-white px-6 py-10 animate-[fadeUp_.9s_ease_both]">
         <div className="flex justify-center mb-5.5">
           <img src="/logos/Ethos-White-512.png" className="w-16" />
         </div>

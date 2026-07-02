@@ -6,7 +6,7 @@ function OrderNavbar() {
   const { count: cartCount } = useCart();
 
   return (
-    <header className="sticky top-0 z-50 flex items-center justify-between py-3.75 px-9 bg-[color-mix(in_oklab,var(--background)_86%,transparent)] backdrop-blur-md border-b border-b-border">
+    <header className="sticky top-0 z-50 flex items-center justify-between py-3.75 px-5 md:px-9 bg-[color-mix(in_oklab,var(--background)_86%,transparent)] backdrop-blur-md border-b border-b-border">
       <button
         onClick={() => navigate("/")}
         className="flex items-center gap-2.25 cursor-pointer text-plum-ink text-[13.5px] font-medium hover:scale-105 duration-300"

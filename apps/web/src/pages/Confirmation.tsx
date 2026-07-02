@@ -7,7 +7,7 @@ export default function Confirmation() {
   const mode: string = state?.mode === "delivery" ? "Delivery" : "Pickup";
 
   return (
-    <div className="max-w-130 mx-auto px-9 pt-22.5 pb-22.5 text-center">
+    <div className="max-w-130 mx-auto px-5 md:px-9 pt-16 md:pt-22.5 pb-22.5 text-center">
       {/* Diamond check */}
       <div className="flex justify-center mb-7 animate-[pop_0.5s_ease_both]">
         <div className="w-16 h-16 border-2 border-royal-purple rotate-45 flex items-center justify-center">
