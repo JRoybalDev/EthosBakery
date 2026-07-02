@@ -1,4 +1,3 @@
-import React from "react";
 import MapCard from "../cards/MapCard";
 import locations from "@/data/locations.json";
 

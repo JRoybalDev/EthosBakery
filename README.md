@@ -1,108 +1,92 @@
-# frontend-template-v1
+# Ethos Bakery
 
-A frontend-first starter for simple websites and webpages, structured as a Bun workspaces monorepo so a backend can be added later without restructuring anything. By default only the frontend runs — the `api` app is an optional scaffold for when a client needs auth, a database, or server logic.
+A frontend prototype for a Los Angeles artisan bakery — featuring a full home page, browsable menu, and a complete order flow from cart through confirmation.
+
+Built as a design-to-code exercise using a Claude Design mockup as the reference.
+
+---
+
+## Features
+
+**Home**
+- Hero slideshow cycling through menu item photography with a purple-to-blue gradient overlay
+- About section with brand copy
+- Interactive location cards with embedded Leaflet/OpenStreetMap maps pinned to each address
+- Menu preview section with category images and item listings
+
+**Order flow**
+- `/order` — searchable, filterable menu grid with live cart pill
+- `/cart` — line items with quantity steppers, order summary, pickup/delivery fee
+- `/checkout` — pickup/delivery toggle, contact fields, location picker or address input
+- `/payment` — order summary + card fields (mock, no real payment processing)
+- `/confirmation` — animated confirmation screen with generated order number
+
+**Navigation**
+- Desktop: sticky frosted-glass navbar with smooth scroll and page routing
+- Mobile: hamburger menu with animated slide-out drawer, scroll lock, serif nav items
+
+**Other**
+- Page transition animations (slide left/right based on direction)
+- Framer Motion throughout
+- Fully responsive — mobile-first layout with Tailwind breakpoints
+- OpenGraph + Twitter Card metadata for link sharing
+- Per-page document titles
+
+---
 
 ## Stack
 
-**Frontend (`apps/web`)**
-- **[Vite](https://vite.dev/)** — build tool and dev server
-- **[React 19](https://react.dev/)** + **TypeScript**
-- **[Tailwind CSS v4](https://tailwindcss.com/)** — via `@tailwindcss/vite`, no PostCSS config needed
-- **[shadcn/ui](https://ui.shadcn.com/)** — copy-in component library (`Button` included)
-- **[framer-motion](https://motion.dev/)** — animation
-- **[react-icons](https://react-icons.github.io/react-icons/)** — icon packs
-- **[react-spinners](https://www.davidhu.io/react-spinners/)** — loading spinners
+- **React 19** + **TypeScript**
+- **Vite 6**
+- **Tailwind CSS v4** — CSS-first config via `@theme`
+- **React Router v7**
+- **Framer Motion v12**
+- **React Leaflet** + **OpenStreetMap** — no API key required
+- **Bun** — package manager and workspace runner
 
-**Backend (`apps/api`) — optional, scaffolded but not wired up by default**
-- **[Hono](https://hono.dev/)** — lightweight server framework
-- **[Drizzle ORM](https://orm.drizzle.team/)** + **PostgreSQL** (`pg` driver)
-- Runs on **[Bun](https://bun.sh/)**
-
-**Tooling**
-- **Bun** — package manager, workspace runner, and runtime for the API (replaces npm/node everywhere)
+---
 
 ## Project structure
 
 ```
-apps/
-  web/                  # frontend — the only app that runs by default
-    src/
-      components/ui/    # shadcn components (Button, etc.)
-      lib/utils.ts       # cn() helper (clsx + tailwind-merge)
-      index.css          # Tailwind v4 import + shadcn theme variables (light/dark)
-      App.tsx            # demo page — replace with your own content
-      main.tsx           # React root mount
-    components.json      # shadcn/ui config
-    vite.config.ts        # Vite + Tailwind v4 plugin + @ path alias
-  api/                   # backend — optional, add only if the project needs one
-    src/
-      index.ts           # Hono app entry, has a /api/health route
-      db/
-        schema.ts         # Drizzle table definitions
-        index.ts          # Drizzle client (reads DATABASE_URL)
-    drizzle.config.ts      # drizzle-kit config
-    .env.example           # DATABASE_URL, PORT
-package.json             # workspace root — defines apps/* as workspaces
+apps/web/
+  public/
+    images/menu/    # menu item photography
+    logos/          # Ethos brand mark (purple + white variants)
+    hero.png        # OG image
+  src/
+    components/
+      cards/        # MapCard, MenuCategory, MenuItem
+      home/         # Hero, About, Locations, Menu sections
+      navigation/   # Navbar (with mobile drawer), OrderNavbar, Footer
+      orders/       # OrderMenuCard, SearchFilters
+    context/
+      CartContext   # cart state, mode (pickup/delivery), derived totals
+    data/
+      menuItems.json
+      locations.json
+      nav.json
+    pages/          # Home, Order, Cart, Checkout, Payment, Confirmation
+    lib/
+      capitalizeFirst.ts
 ```
+
+---
 
 ## Getting started
 
-Install once from the repo root — Bun resolves both workspaces:
-
 ```bash
 bun install
+bun run dev       # http://localhost:5173
+bun run build     # production build → apps/web/dist/
 ```
 
-### Frontend only (default)
+---
 
-```bash
-bun run dev       # starts apps/web on http://localhost:5173
-bun run build     # production build to apps/web/dist/
-```
+## Deployment
 
-### Adding the backend
+Configured for Vercel via `vercel.json` at the repo root. Import the repo in Vercel — no additional settings required. The SPA rewrite ensures React Router routes (`/order`, `/cart`, etc.) resolve correctly on direct load.
 
-```bash
-bun run dev:api    # starts apps/api on http://localhost:3000
-```
+---
 
-Before running the API, copy `apps/api/.env.example` to `apps/api/.env` and set `DATABASE_URL` to a real Postgres connection string. Then:
-
-```bash
-cd apps/api
-bun run db:generate   # generate a migration from src/db/schema.ts
-bun run db:migrate    # apply migrations
-bun run db:studio     # browse the database
-```
-
-Running both frontend and backend at once just means running `bun run dev` and `bun run dev:api` in separate terminals (or wire up a `concurrently`-style script if you want a single command).
-
-## Adding more shadcn components
-
-```bash
-cd apps/web
-bunx shadcn add card
-bunx shadcn add input
-bunx shadcn add dialog
-```
-
-Components land in `apps/web/src/components/ui/` and are yours to edit directly — there's no library to upgrade later.
-
-## Path aliases
-
-In `apps/web`, `@/*` resolves to `src/*`:
-
-```ts
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-```
-
-Configured in both `tsconfig.app.json` (for the TS server) and `vite.config.ts` (for the bundler).
-
-## Styling
-
-Tailwind v4 is wired up via the `@tailwindcss/vite` plugin — no `tailwind.config.js` or `postcss.config.js` required. Theme tokens (colors, radius, etc.) live in `apps/web/src/index.css` as CSS variables under `:root` and `.dark`, mapped through `@theme inline` for Tailwind utility classes. Toggle dark mode by adding/removing the `dark` class on a parent element (e.g. `<html>`).
-
-## When to add the backend
-
-Start with just `apps/web` for static pages, marketing sites, and portfolios. Add `apps/api` once the client needs persistent data, user accounts, or server-side logic — the scaffold is already wired for Hono + Drizzle + PostgreSQL, matching the full stack used elsewhere (Vite + React + Hono + Drizzle + PostgreSQL + Bun), so there's no migration cost to bring it in later.
+*Prototype site — no real payments, accounts, or order processing. Property of [JRoybalDev](https://jroybal.dev).*

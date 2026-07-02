@@ -10,7 +10,7 @@ function getIndex(pathname: string) {
 }
 
 const DURATION = 0.5;
-const EASE = [0.4, 0, 0.2, 1];
+const EASE: [number, number, number, number] = [0.4, 0, 0.2, 1];
 
 interface Props {
   children: React.ReactNode;

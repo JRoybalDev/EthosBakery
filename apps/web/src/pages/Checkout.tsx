@@ -5,7 +5,7 @@ import locations from "@/data/locations.json";
 
 export default function Checkout() {
   const navigate = useNavigate();
-  const { mode, setMode, subtotal, tax, deliveryFee, total, fmt } = useCart();
+  const { mode, setMode, total, fmt } = useCart();
 
   useEffect(() => { document.title = "Ethos Bakery | Checkout"; }, []);
   const [form, setForm] = useState({ name: "", phone: "", email: "", address: "", locationIdx: 0 });
