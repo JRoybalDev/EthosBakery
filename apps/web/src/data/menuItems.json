@@ -5,7 +5,7 @@
     "itemName": "Almond Croissant",
     "itemDescription": "Twice-baked, frangipane, dusted sugar",
     "price": "$2.75",
-    "image": "/images/hero.png"
+    "image": "/images/menu/almond-croissants-recipe.jpg"
   },
   {
     "id": "p2",
@@ -13,7 +13,7 @@
     "itemName": "Pain au Chocolat",
     "itemDescription": "Two batons of dark Valrhona",
     "price": "$4.75",
-    "image": "/images/hero.png"
+    "image": "/images/menu/Pain-au-chocolat-1-500x500.jpg"
   },
   {
     "id": "p3",
@@ -21,7 +21,7 @@
     "itemName": "Morning Bun",
     "itemDescription": "Orange zest, cinnamon, crackly edges",
     "price": "$5.00",
-    "image": "/images/hero.png"
+    "image": "/images/menu/images.jpeg"
   },
   {
     "id": "p4",
@@ -29,7 +29,7 @@
     "itemName": "Kouign-Amann",
     "itemDescription": "Caramelized laminated layers",
     "price": "$5.25",
-    "image": "/images/hero.png"
+    "image": "/images/menu/images-1.jpeg"
   },
   {
     "id": "b1",
@@ -37,7 +37,7 @@
     "itemName": "Country Sourdough",
     "itemDescription": "3-day ferment, blistered crust",
     "price": "$9.00",
-    "image": "/images/hero.png"
+    "image": "/images/menu/images-2.jpeg"
   },
   {
     "id": "b2",
@@ -45,7 +45,7 @@
     "itemName": "Sesame Baguette",
     "itemDescription": "Crisp crust, open crumb",
     "price": "$4.50",
-    "image": "/images/hero.png"
+    "image": "/images/menu/images-3.jpeg"
   },
   {
     "id": "b3",
@@ -53,7 +53,7 @@
     "itemName": "Seeded Rye",
     "itemDescription": "Caraway, flax & sunflower",
     "price": "$8.50",
-    "image": "/images/hero.png"
+    "image": "/images/menu/images-4.jpeg"
   },
   {
     "id": "b4",
@@ -61,7 +61,7 @@
     "itemName": "Brioche Loaf",
     "itemDescription": "Cultured butter, feather-soft",
     "price": "$7.00",
-    "image": "/images/hero.png"
+    "image": "/images/menu/images-5.jpeg"
   },
   {
     "id": "c1",
@@ -69,7 +69,7 @@
     "itemName": "Cortado",
     "itemDescription": "Equal parts espresso & milk",
     "price": "$4.25",
-    "image": "/images/hero.png"
+    "image": "/images/menu/images-6.jpeg"
   },
   {
     "id": "c2",
@@ -77,7 +77,7 @@
     "itemName": "Honey Lavender Latte",
     "itemDescription": "House syrup, single-origin",
     "price": "$6.00",
-    "image": "/images/hero.png"
+    "image": "/images/menu/images-7.jpeg"
   },
   {
     "id": "c3",
@@ -85,7 +85,7 @@
     "itemName": "Cold Brew",
     "itemDescription": "18-hour steep, deep & smooth",
     "price": "$5.00",
-    "image": "/images/hero.png"
+    "image": "https://images.unsplash.com/photo-1517959105821-eaf2591984ca?auto=format&fit=crop&w=600&q=80"
   },
   {
     "id": "c4",
@@ -93,6 +93,6 @@
     "itemName": "Cappuccino",
     "itemDescription": "Dense microfoam, dark roast",
     "price": "$4.50",
-    "image": "/images/hero.png"
+    "image": "/images/menu/images-8.jpeg"
   }
 ]

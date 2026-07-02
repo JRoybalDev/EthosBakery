@@ -52,10 +52,10 @@ export default function Order() {
       )}
 
       {count > 0 && (
-        <div className="sticky bottom-5.5 flex justify-center mt-10">
+        <div className="fixed bottom-5.5 left-0 right-0 flex justify-center pointer-events-none z-40">
           <button
             onClick={() => navigate("/cart")}
-            className="flex items-center gap-3.5 border-none bg-plum-ink text-white font-sans text-[14px] font-semibold py-[15px] px-6.5 rounded-full cursor-pointer [box-shadow:0_8px_28px_rgba(0,0,0,0.18)] hover:scale-105 duration-200"
+            className="flex items-center gap-3.5 border-none bg-plum-ink text-white font-sans text-[14px] font-semibold py-3.75 px-6.5 rounded-full cursor-pointer [box-shadow:0_8px_28px_rgba(0,0,0,0.18)] hover:scale-105 duration-200 pointer-events-auto"
           >
             <span>View cart · {count} item{count !== 1 ? "s" : ""}</span>
             <span className="font-serif text-[17px]">{fmt(subtotal)}</span>

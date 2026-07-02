@@ -3,7 +3,11 @@ import { useNavigate } from "react-router-dom";
 import MenuCategory from "../cards/menuCards/MenuCategory";
 import menuItems from "@/data/menuItems.json";
 
-const menuCategories = ['pastries', 'breads', 'coffee'];
+const menuCategories = [
+  { category: 'pastries', image: '/images/menu/images.jpeg' },
+  { category: 'breads',   image: '/images/menu/images-4.jpeg' },
+  { category: 'coffee',   image: '/images/menu/images-8.jpeg' },
+];
 
 function Menu() {
   const navigate = useNavigate();
@@ -37,8 +41,8 @@ function Menu() {
           </button>
         </div>
         <div className="grid grid-cols-3 gap-10">
-          {menuCategories.map((category, idx) => (
-            <MenuCategory key={idx} category={category} menuItems={menuItems} />
+          {menuCategories.map(({ category, image }, idx) => (
+            <MenuCategory key={idx} category={category} image={image} menuItems={menuItems} />
           ))}
         </div>
       </div>

@@ -12,20 +12,32 @@ import Cart from "./pages/Cart.tsx";
 import Checkout from "./pages/Checkout.tsx";
 import Payment from "./pages/Payment.tsx";
 import Confirmation from "./pages/Confirmation.tsx";
-
 import ScrollToTop from "./components/ScrollToTop.tsx";
+import PageTransition from "./components/PageTransition.tsx";
 import navDirectory from "./data/nav.json";
 
 const ORDER_ROUTES = ["/order", "/cart", "/checkout", "/payment", "/confirmation"];
 
-function DecideNavbar() {
-  const { pathname } = useLocation();
-  return ORDER_ROUTES.includes(pathname) ? <OrderNavbar /> : <Navbar navDirectory={navDirectory} />;
-}
+function Layout() {
+  const location = useLocation();
+  const isOrderRoute = ORDER_ROUTES.includes(location.pathname);
 
-function DecideFooter() {
-  const { pathname } = useLocation();
-  return ORDER_ROUTES.includes(pathname) ? null : <Footer />;
+  return (
+    <div className="min-h-screen bg-background">
+      {isOrderRoute ? <OrderNavbar /> : <Navbar navDirectory={navDirectory} />}
+      <PageTransition location={location}>
+        <Routes location={location}>
+          <Route path="/" element={<Home />} />
+          <Route path="/order" element={<Order />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/payment" element={<Payment />} />
+          <Route path="/confirmation" element={<Confirmation />} />
+        </Routes>
+      </PageTransition>
+      {!isOrderRoute && <Footer />}
+    </div>
+  );
 }
 
 createRoot(document.getElementById("root")!).render(
@@ -33,18 +45,7 @@ createRoot(document.getElementById("root")!).render(
     <BrowserRouter>
       <CartProvider>
         <ScrollToTop />
-        <div className="min-h-screen bg-background">
-          <DecideNavbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/order" element={<Order />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/payment" element={<Payment />} />
-            <Route path="/confirmation" element={<Confirmation />} />
-          </Routes>
-          <DecideFooter />
-        </div>
+        <Layout />
       </CartProvider>
     </BrowserRouter>
   </StrictMode>,
