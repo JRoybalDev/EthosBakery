@@ -15,7 +15,7 @@ function Hero() {
 
   return (
     <div
-      id="#hero"
+      id="hero"
       className="scroll-mt-17 relative min-h-[84vh] flex items-center justify-center overflow-hidden"
     >
       <div>
@@ -43,7 +43,7 @@ function Hero() {
           <button onClick={() => handleRedirect('/order')} className="bg-white text-purple-deep text-sm font-semibold py-3.5 px-7.5 rounded-4xl tracking-[0.03em] hover:cursor-pointer hover:scale-105 duration-300">
             Order Now
           </button>
-          <a href="#menu" className="border-[1.5px] border-white/70 text-sm font-semibold px-7 py-3.25 rounded-4xl tracking-[0.03em] hover:cursor-pointer hover:scale-105 duration-300">
+          <a onClick={() => handleRedirect('#menu')} className="border-[1.5px] border-white/70 text-sm font-semibold px-7 py-3.25 rounded-4xl tracking-[0.03em] hover:cursor-pointer hover:scale-105 duration-300">
             Explore Menu
           </a>
         </div>

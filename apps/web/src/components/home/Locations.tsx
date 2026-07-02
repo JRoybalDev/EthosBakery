@@ -21,7 +21,7 @@ const locations = [
 function Locations() {
   
   return (
-    <div id="#locations" className="scroll-mt-17 px-11 py-24 bg-secondary">
+    <div id="locations" className="scroll-mt-17 px-11 py-24 bg-secondary">
       <div className="max-w-280 my-0 mx-auto">
         <div className="text-center mb-12.5">
           <p className="text-sm tracking-[0.4em] uppercase text-purple-deep font-semibold mb-4">

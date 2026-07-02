@@ -116,7 +116,7 @@ function Menu() {
   };
 
   return (
-    <div id="#menu" className="scroll-mt-17 px-11 py-26 bg-background">
+    <div id="menu" className="scroll-mt-17 px-11 py-26 bg-background">
       <div className="max-w-280 my-0 mx-auto">
         <div className="flex items-end justify-between flex-wrap gap-5 mb-13.5">
           <div>

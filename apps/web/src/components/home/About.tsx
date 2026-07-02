@@ -3,7 +3,7 @@ import React from "react";
 function About() {
   return (
     <div
-      id="#about"
+      id="about"
       className="scroll-mt-17 px-11 py-27 text-center bg-background"
     >
       <div className="max-w-3xl my-0 mx-auto">
