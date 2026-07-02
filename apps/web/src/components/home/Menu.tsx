@@ -8,8 +8,8 @@ const menuItems = [
     category: "pastries",
     itemName: "Almond Croissant",
     itemDescription: "Twice-baked, frangipane, dusted sugar",
-    price: "$5.50",
-    image: "images/croissant.png",
+    price: "$2.75",
+    image: "/images/hero.png",
   },
   {
     id: "p2",
@@ -17,7 +17,7 @@ const menuItems = [
     itemName: "Pain au Chocolat",
     itemDescription: "Two batons of dark Valrhona",
     price: "$4.75",
-    image: "images/painauchocolat.png",
+    image: "/images/hero.png",
   },
   {
     id: "p3",
@@ -25,7 +25,7 @@ const menuItems = [
     itemName: "Morning Bun",
     itemDescription: "Orange zest, cinnamon, crackly edges",
     price: "$5.00",
-    image: "images/morningbun.png",
+    image: "/images/hero.png",
   },
   {
     id: "p4",
@@ -33,7 +33,7 @@ const menuItems = [
     itemName: "Kouign-Amann",
     itemDescription: "Caramelized laminated layers",
     price: "$5.25",
-    image: "images/kouignamann.png",
+    image: "/images/hero.png",
   },
   {
     id: "b1",
@@ -41,7 +41,7 @@ const menuItems = [
     itemName: "Country Sourdough",
     itemDescription: "3-day ferment, blistered crust",
     price: "$9.00",
-    image: "images/sourdough.png",
+    image: "/images/hero.png",
   },
   {
     id: "b2",
@@ -49,7 +49,7 @@ const menuItems = [
     itemName: "Sesame Baguette",
     itemDescription: "Crisp crust, open crumb",
     price: "$4.50",
-    image: "images/baguette.png",
+    image: "/images/hero.png",
   },
   {
     id: "b3",
@@ -57,7 +57,7 @@ const menuItems = [
     itemName: "Seeded Rye",
     itemDescription: "Caraway, flax & sunflower",
     price: "$8.50",
-    image: "images/rye.png",
+    image: "/images/hero.png",
   },
   {
     id: "b4",
@@ -65,7 +65,7 @@ const menuItems = [
     itemName: "Brioche Loaf",
     itemDescription: "Cultured butter, feather-soft",
     price: "$7.00",
-    image: "images/brioche.png",
+    image: "/images/hero.png",
   },
   {
     id: "c1",
@@ -73,7 +73,7 @@ const menuItems = [
     itemName: "Cortado",
     itemDescription: "Equal parts espresso & milk",
     price: "$4.25",
-    image: "images/cortado.png",
+    image: "/images/hero.png",
   },
   {
     id: "c2",
@@ -81,7 +81,7 @@ const menuItems = [
     itemName: "Honey Lavender Latte",
     itemDescription: "House syrup, single-origin",
     price: "$6.00",
-    image: "images/latte.png",
+    image: "/images/hero.png",
   },
   {
     id: "c3",
@@ -89,7 +89,7 @@ const menuItems = [
     itemName: "Cold Brew",
     itemDescription: "18-hour steep, deep & smooth",
     price: "$5.00",
-    image: "images/coldbrew.png",
+    image: "/images/hero.png",
   },
   {
     id: "c4",
@@ -101,7 +101,7 @@ const menuItems = [
   },
 ];
 
-const menuCategories = ['pasteries', 'breads', 'coffee'];
+const menuCategories = ['pastries', 'breads', 'coffee'];
 
 function Menu() {
   const navigate = useNavigate();
@@ -129,12 +129,12 @@ function Menu() {
           </div>
           <button
             onClick={() => handleRedirect("/order")}
-            className="border-2 border-purple-deep text-purple-deep text-[13.5px] font-semibold px-6.5 py-3 rounded-4xl hover:cursor-pointer hover:scale-105 duration-300 tracking-[0.03em]"
+            className="border-[1.5px] border-border text-purple-deep text-[13.5px] font-semibold px-6.5 py-3 rounded-4xl hover:cursor-pointer hover:scale-105 duration-300 tracking-[0.03em]"
           >
             Order for pickup & delivery →
           </button>
         </div>
-        <div className="grid grid-cols-[3,1fr] gap-10">
+        <div className="grid grid-cols-3 gap-10">
           {menuCategories.map((category, idx) => (
             <MenuCategory key={idx} category={category} menuItems={menuItems}/>
           ))}
