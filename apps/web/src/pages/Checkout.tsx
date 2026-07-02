@@ -18,10 +18,10 @@ export default function Checkout() {
       : "bg-card border-hairline text-foreground";
 
   return (
-    <div className="max-w-[600px] mx-auto px-9 pt-11 pb-22.5">
+    <div className="max-w-150 mx-auto px-9 pt-11 pb-22.5">
       <button
         onClick={() => navigate("/cart")}
-        className="border-none bg-transparent cursor-pointer text-royal-purple text-[13.5px] font-semibold mb-[18px] p-0"
+        className="border-none bg-transparent cursor-pointer text-royal-purple text-[13.5px] font-semibold mb-4.5 p-0 hover:scale-105 duration-300"
       >
         ← Back to cart
       </button>
@@ -35,17 +35,17 @@ export default function Checkout() {
       <div className="grid grid-cols-2 gap-3 mb-7.5">
         <button
           onClick={() => setMode("pickup")}
-          className={`text-left border-[1.5px] rounded-[14px] p-[18px] cursor-pointer font-sans ${modeBtn(mode === "pickup")}`}
+          className={`text-left border-[1.5px] rounded-[14px] p-4.5 cursor-pointer font-sans hover:scale-105 duration-500 ${modeBtn(mode === "pickup")}`}
         >
           <div className="font-semibold text-[15px] mb-1">Pickup</div>
           <div className="text-[13px] opacity-80">Ready in ~20 min · free</div>
         </button>
         <button
           onClick={() => setMode("delivery")}
-          className={`text-left border-[1.5px] rounded-[14px] p-[18px] cursor-pointer font-sans ${modeBtn(mode === "delivery")}`}
+          className={`text-left border-[1.5px] rounded-[14px] p-4.5 cursor-pointer font-sans hover:scale-105 duration-500 ${modeBtn(mode === "delivery")}`}
         >
           <div className="font-semibold text-[15px] mb-1">Delivery</div>
-          <div className="text-[13px] opacity-80">35–50 min · $4.99</div>
+          <div className="text-[13px] opacity-80">35-50 min · $4.99</div>
         </button>
       </div>
 
@@ -57,7 +57,7 @@ export default function Checkout() {
             value={form.name}
             onChange={set("name")}
             placeholder="Your name"
-            className="w-full border border-hairline bg-card rounded-[11px] py-[13px] px-[15px] text-[14px] text-foreground"
+            className="w-full border border-hairline bg-card rounded-[11px] py-3.25 px-3.75 text-[14px] text-foreground"
           />
         </div>
         <div className="flex gap-3.5">
@@ -67,7 +67,7 @@ export default function Checkout() {
               value={form.phone}
               onChange={set("phone")}
               placeholder="(323) 555–0000"
-              className="w-full border border-hairline bg-card rounded-[11px] py-[13px] px-[15px] text-[14px] text-foreground"
+              className="w-full border border-hairline bg-card rounded-[11px] py-3.25 px-3.75 text-[14px] text-foreground"
             />
           </div>
           <div className="flex-1">
@@ -76,7 +76,7 @@ export default function Checkout() {
               value={form.email}
               onChange={set("email")}
               placeholder="you@email.com"
-              className="w-full border border-hairline bg-card rounded-[11px] py-[13px] px-[15px] text-[14px] text-foreground"
+              className="w-full border border-hairline bg-card rounded-[11px] py-3.25 px-3.75 text-[14px] text-foreground"
             />
           </div>
         </div>
@@ -90,10 +90,10 @@ export default function Checkout() {
             {locations.map((loc, idx) => (
               <label
                 key={idx}
-                className="flex items-center gap-2.75 border border-hairline bg-card rounded-[11px] py-3.5 px-[15px] mb-2.5 cursor-pointer"
+                className="flex items-center gap-2.75 border border-hairline bg-card rounded-[11px] py-3.5 px-3.75 mb-2.5 cursor-pointer hover:scale-105 duration-500"
               >
                 <span
-                  className={`w-[13px] h-[13px] border-[1.5px] border-royal-purple rounded-full flex-none transition-colors ${
+                  className={`w-3.25 h-3.25 border-[1.5px] border-royal-purple rounded-full flex-none transition-colors ${
                     form.locationIdx === idx ? "bg-royal-purple" : ""
                   }`}
                 />
@@ -122,21 +122,21 @@ export default function Checkout() {
               value={form.address}
               onChange={set("address")}
               placeholder="Street address, city, ZIP"
-              className="w-full border border-hairline bg-card rounded-[11px] py-[13px] px-[15px] text-[14px] text-foreground"
+              className="w-full border border-hairline bg-card rounded-[11px] py-3.25 px-3.75 text-[14px] text-foreground"
             />
           </div>
         )}
       </div>
 
       {/* Total row */}
-      <div className="flex justify-between items-baseline mt-7 pt-[18px] border-t border-border">
+      <div className="flex justify-between items-baseline mt-7 pt-4.5 border-t border-border">
         <span className="text-[14px] text-muted-foreground">Total</span>
         <span className="font-serif text-[26px] font-semibold text-royal-purple">{fmt(total)}</span>
       </div>
 
       <button
         onClick={() => navigate("/payment")}
-        className="w-full border-none bg-plum-ink text-white font-sans text-[15px] font-semibold py-[17px] rounded-[14px] cursor-pointer mt-[18px] hover:opacity-90 duration-200"
+        className="w-full border-none bg-plum-ink text-white font-sans text-[15px] font-semibold py-4.25 rounded-[14px] cursor-pointer mt-4.5 hover:opacity-90 duration-300 hover:scale-105"
       >
         Continue to payment →
       </button>

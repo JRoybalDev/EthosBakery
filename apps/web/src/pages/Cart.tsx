@@ -8,10 +8,10 @@ export default function Cart() {
   const isEmpty = count === 0;
 
   return (
-    <div className="max-w-[720px] mx-auto px-9 pt-11 pb-22.5">
+    <div className="max-w-180 mx-auto px-9 pt-11 pb-22.5">
       <button
         onClick={() => navigate("/order")}
-        className="border-none bg-transparent cursor-pointer text-royal-purple text-[13.5px] font-semibold mb-[18px] p-0"
+        className="border-none bg-transparent cursor-pointer text-royal-purple text-[13.5px] font-semibold mb-4.5 p-0 hover:scale-105 duration-300"
       >
         ← Add more items
       </button>
@@ -21,11 +21,11 @@ export default function Cart() {
       </h1>
 
       {isEmpty ? (
-        <div className="text-center py-[70px] px-5 bg-card border border-border rounded-2xl">
+        <div className="text-center py-17.5 px-5 bg-card border border-border rounded-2xl">
           <p className="font-serif text-[26px] mb-4 text-muted-foreground">Your cart is empty.</p>
           <button
             onClick={() => navigate("/order")}
-            className="border-none bg-royal-purple text-white font-sans text-[14px] font-semibold py-[13px] px-7 rounded-full cursor-pointer hover:scale-105 duration-200"
+            className="border-none bg-royal-purple text-white font-sans text-[14px] font-semibold py-3.25 px-7 rounded-full cursor-pointer hover:scale-105 duration-200"
           >
             Browse the menu
           </button>
@@ -39,7 +39,7 @@ export default function Cart() {
                 key={line.id}
                 className="flex items-center gap-4 p-[18px_20px] border-b border-border last:border-b-0"
               >
-                <div className="w-[60px] h-[56px] rounded-[10px] flex-none overflow-hidden [background:var(--ph)]">
+                <div className="w-15 h-14 rounded-[10px] flex-none overflow-hidden [background:var(--ph)]">
                   <img src={line.image} alt={line.itemName} className="w-full h-full object-cover block" />
                 </div>
 
@@ -52,16 +52,16 @@ export default function Cart() {
                 <div className="flex items-center border-[1.5px] border-hairline rounded-full overflow-hidden">
                   <button
                     onClick={() => dec(line.id)}
-                    className="border-none bg-transparent text-foreground font-sans text-[16px] w-[30px] h-8 cursor-pointer"
+                    className="border-none bg-transparent text-foreground font-sans text-[16px] w-7.5 h-8 cursor-pointer"
                   >
                     −
                   </button>
-                  <span className="min-w-[22px] text-center text-[14px] font-semibold">
+                  <span className="min-w-5.5 text-center text-[14px] font-semibold">
                     {line.quantity}
                   </span>
                   <button
                     onClick={() => add(line.id)}
-                    className="border-none bg-transparent text-foreground font-sans text-[16px] w-[30px] h-8 cursor-pointer"
+                    className="border-none bg-transparent text-foreground font-sans text-[16px] w-7.5 h-8 cursor-pointer"
                   >
                     +
                   </button>
@@ -75,7 +75,7 @@ export default function Cart() {
                 {/* Remove */}
                 <button
                   onClick={() => remove(line.id)}
-                  className="border-none bg-transparent cursor-pointer text-muted-foreground text-[15px] p-1 hover:text-foreground duration-150"
+                  className="border-none bg-transparent cursor-pointer text-muted-foreground text-[15px] p-1 hover:text-foreground duration-300 hover:scale-115"
                 >
                   ✕
                 </button>
@@ -84,19 +84,19 @@ export default function Cart() {
           </div>
 
           {/* Order summary */}
-          <div className="bg-card border border-border rounded-2xl p-[22px_24px] mt-[18px]">
-            <div className="flex justify-between text-[14.5px] text-muted-foreground mb-[11px]">
+          <div className="bg-card border border-border rounded-2xl p-[22px_24px] mt-4.5">
+            <div className="flex justify-between text-[14.5px] text-muted-foreground mb-2.75">
               <span>Subtotal</span><span>{fmt(subtotal)}</span>
             </div>
-            <div className="flex justify-between text-[14.5px] text-muted-foreground mb-[11px]">
+            <div className="flex justify-between text-[14.5px] text-muted-foreground mb-2.75">
               <span>Estimated tax</span><span>{fmt(tax)}</span>
             </div>
             {mode === "delivery" && (
-              <div className="flex justify-between text-[14.5px] text-muted-foreground mb-[11px]">
+              <div className="flex justify-between text-[14.5px] text-muted-foreground mb-2.75">
                 <span>Delivery</span><span>{fmt(deliveryFee)}</span>
               </div>
             )}
-            <div className="flex justify-between items-baseline pt-[13px] border-t border-border mt-1">
+            <div className="flex justify-between items-baseline pt-3.25 border-t border-border mt-1">
               <span className="font-semibold text-[15px]">Total</span>
               <span className="font-serif text-[28px] font-semibold text-royal-purple">
                 {fmt(total)}
@@ -106,7 +106,7 @@ export default function Cart() {
 
           <button
             onClick={() => navigate("/checkout")}
-            className="w-full border-none bg-plum-ink text-white font-sans text-[15px] font-semibold py-[17px] rounded-[14px] cursor-pointer mt-[18px] hover:opacity-90 duration-200"
+            className="w-full border-none bg-plum-ink text-white font-sans text-[15px] font-semibold py-4.25 rounded-[14px] cursor-pointer mt-4.5 hover:opacity-90 duration-300 hover:scale-105"
           >
             Continue to checkout →
           </button>

@@ -13,6 +13,7 @@ import Checkout from "./pages/Checkout.tsx";
 import Payment from "./pages/Payment.tsx";
 import Confirmation from "./pages/Confirmation.tsx";
 
+import ScrollToTop from "./components/ScrollToTop.tsx";
 import navDirectory from "./data/nav.json";
 
 const ORDER_ROUTES = ["/order", "/cart", "/checkout", "/payment", "/confirmation"];
@@ -31,6 +32,7 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
       <CartProvider>
+        <ScrollToTop />
         <div className="min-h-screen bg-background">
           <DecideNavbar />
           <Routes>
