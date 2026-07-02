@@ -1,4 +1,13 @@
-import React from "react";
+import { MapContainer, TileLayer, Marker } from "react-leaflet";
+import L from "leaflet";
+
+const pin = new L.Icon({
+  iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
+  iconRetinaUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
+  shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+});
 
 interface MapItem {
   locationName: string;
@@ -6,6 +15,8 @@ interface MapItem {
   location: string;
   daysOpen: string;
   hoursOpen: string;
+  lat: number;
+  lng: number;
 }
 
 interface MapCardProps {
@@ -15,8 +26,21 @@ interface MapCardProps {
 function MapCard({ location }: MapCardProps) {
   return (
     <div className="bg-card border-border rounded-2xl overflow-hidden">
-      <div className="h-50 border-b-border">
-        {/* Replace with map location */}
+      <div className="h-50">
+        <MapContainer
+          center={[location.lat, location.lng]}
+          zoom={15}
+          scrollWheelZoom={false}
+          dragging={false}
+          doubleClickZoom={false}
+          touchZoom={false}
+          zoomControl={false}
+          attributionControl={false}
+          style={{ width: "100%", height: "100%" }}
+        >
+          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+          <Marker position={[location.lat, location.lng]} icon={pin} />
+        </MapContainer>
       </div>
       <div className="px-6.5 py-7">
         <div className="flex items-center gap-2.25 mb-1.75">

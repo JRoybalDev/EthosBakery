@@ -4,13 +4,17 @@
     "businessName": "Ethos Sunset",
     "location": "2814 Sunset Blvd, Los Angeles, CA 90026",
     "daysOpen": "Mon-Sun",
-    "hoursOpen": "7am-6pm"
+    "hoursOpen": "7am-6pm",
+    "lat": 34.07701,
+    "lng": -118.26112
   },
   {
     "locationName": "Venice",
     "businessName": "Ethos Abbot",
     "location": "1331 Abbot Kinney Blvd, Venice, CA 90291",
     "daysOpen": "Mon-Sun",
-    "hoursOpen": "7am-6pm"
+    "hoursOpen": "7am-6pm",
+    "lat": 33.99398,
+    "lng": -118.46539
   }
 ]
